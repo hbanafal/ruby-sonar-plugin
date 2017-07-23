@@ -2,6 +2,7 @@ package com.godaddy.sonar.ruby.core;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.sonar.api.batch.fs.InputComponent;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.resources.Language;
 import org.sonar.api.resources.Qualifiers;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class RubyFile extends Resource
+public class RubyFile extends Resource implements InputComponent
 {
     /**
    * 
@@ -103,7 +104,7 @@ public class RubyFile extends Resource
 
     public String getQualifier()
     {
-        return Qualifiers.CLASS;
+        return Qualifiers.FILE;
     }
 
     public boolean matchFilePattern(String antPattern)
@@ -129,6 +130,16 @@ public class RubyFile extends Resource
           + ", getKey()=" + getKey() + ", getId()=" + getId() + ", getPath()=" + getPath() + ", getEffectiveKey()="
           + getEffectiveKey() + ", isExcluded()=" + isExcluded() + "]\n";
     }
+
+	public boolean isFile() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String key() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 //    @Override
 //    public String toString()

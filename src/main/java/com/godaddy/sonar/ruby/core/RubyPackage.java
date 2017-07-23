@@ -2,6 +2,7 @@ package com.godaddy.sonar.ruby.core;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.sonar.api.batch.fs.InputComponent;
 import org.sonar.api.resources.Language;
 import org.sonar.api.resources.Qualifiers;
 import org.sonar.api.resources.Resource;
@@ -9,7 +10,7 @@ import org.sonar.api.resources.Scopes;
 import org.sonar.api.utils.WildcardPattern;
 
 @SuppressWarnings("rawtypes")
-public class RubyPackage extends Resource
+public class RubyPackage extends Resource implements InputComponent
 {
     public static final String DEFAULT_PACKAGE_NAME = "[default]";
 
@@ -66,6 +67,16 @@ public class RubyPackage extends Resource
     @Override
     public String getQualifier()
     {
-        return Qualifiers.PACKAGE;
+        return Qualifiers.DIRECTORY;
     }
+
+	public boolean isFile() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String key() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
